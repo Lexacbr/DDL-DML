@@ -21,6 +21,7 @@
 
 ### Задание 1
 1.1. Поднимите чистый инстанс MySQL версии 8.0+. Можно использовать локальный сервер или контейнер Docker.
+
 ---
 
 ### Ответ 1.1 
@@ -28,27 +29,31 @@
 - Установил MySQL опираясь на [данную статью](https://losst.pro/ustanovka-mysql-ubuntu-16-04)
 
 1.2. Создайте учётную запись sys_temp. 
+
 ---
 
 ### Ответ 1.2
 
 - Я пользовался IDE DBeaver и пользователя создал через боковое меню.
 [Ссылочка как установить DBeaver на Ubuntu 22.04](https://losst.pro/ustanovka-dbeaver-v-ubuntu-22-04)
-
+---
 ![create-user-systemp](scr/create-user-sys-wind.png)
 ![create-user-systemp](scr/create-user-systemp.png)
 ---
 
 1.3. Выполните запрос на получение списка пользователей в базе данных. (скриншот)
+
 ---
 
 ### Ответ 1.3
 ---
 - после входа в окружение MySQL 
+
 ```bash 
 mysql -u root -p
 ```
-выполнил следующую команду:     
+выполнил следующую команду:  
+
 ```bash 
 mysgl> SELECT user FROM user;
 ```
@@ -56,20 +61,24 @@ mysgl> SELECT user FROM user;
 ---
 
 1.4. Дайте все права для пользователя sys_temp. 
+
 ---
 
 ### Ответ 1.4
 - Выдал все права пользователю:
+
 ![all-privileges](scr/all-privileges.png)
 ![all-priv-cmd](scr/all-priv-cmd.png)
 ---
 
 1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
+
 ---
 
 ### Ответ 1.5
 
 - Выполнил ткую команду:
+
 ```bash
 mysql> SHOW GRANTS FOR 'sys_temp'@'localhost';
 ```
@@ -89,18 +98,22 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 ### Ответ 1.8
 
 - Выполнил следующие команды:
+
 ![sakila-in](scr/sakila-in.png)
 ---
 
 1.9. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
-
 *Результатом работы должны быть скриншоты обозначенных заданий, а также простыня со всеми запросами.*
+
+---
 ### Ответ 1.9
 ---
 - Я использовал возможности DBeaver:
+
 ![sakila](scr/sakila.png)
 ---
 - но можно и из консоли:
+
 ![show-tables](scr/show-tables.png)
 ---
 
@@ -115,7 +128,7 @@ customer         | customer_id
 
 ### Ответ 2
 
-- Cоздавал в Google - документах:
+- Cоздавал в Google-документах:
 
 ![name-tabl](scr/name-tabl.png)
 ---
@@ -125,30 +138,33 @@ customer         | customer_id
 
 ### Задание 3*
 3.1. Уберите у пользователя sys_temp права на внесение, изменение и удаление данных из базы sakila.
+
 ---
 
 ### Ответ 3.1
 
 - Выполнил такую команду для отмены привелегий:
+
 ```bash
 mysql> REVOKE INSERT, UPDATE, DELETE ON sakila.* FROM 'sys_temp'@'localhost'
 ```
 ![revoke-cmd](scr/revoke-cmd.png)
 
 - или в приложении:
+
 ![revoke-dbv](scr/revoke-dbv.png)
 ---
 
 3.2. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
-
 *Результатом работы должны быть скриншоты обозначенных заданий, а также простыня со всеми запросами.*
+
 ---
 
 ### Ответ 3.2
 - Выполнил на получение списка прав для пользователя:
+
 ```bash
 mysql> SHOW GRANTS FOR 'sys_temp'@'localhost'
 ```
 ![revoke_sys_temp](scr/3-zadan.png)
 ---
-s
